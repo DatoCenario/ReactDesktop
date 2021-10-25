@@ -43,6 +43,7 @@ export class Folder extends React.PureComponent<FolderProps, FolderState> {
                 </DropDownContextMenuPart>
             </div>
             : null;
+
         let nameEditor = this.state.nameEdit
             ? <Input initialvalue={this.state.name} customAreaClassName="desktop_item_name_editor" onEditEnd={newVal => {
                 this.props.onNameChange && this.props.onNameChange(newVal);
@@ -50,13 +51,17 @@ export class Folder extends React.PureComponent<FolderProps, FolderState> {
             }}/>
             : null;
 
-        return <div onMouseDown={ev => {
+        return <div className="folder_main_div" onMouseDown={ev => {
             if(ev.button !== 2) {
                 return;
             }
 
             ev.stopPropagation();
-            this.setState({contextMenuOpen: true, contaxtMenuOffsetX: ev.nativeEvent.offsetX, contaxtMenuOffsetY: ev.nativeEvent.offsetY});
+
+            let divRect = (ev.currentTarget.className === 'folder_main_div' ? ev.currentTarget : ev.currentTarget.querySelector('folder_main_div')).getBoundingClientRect();
+            let mOffsetX = ev.clientX - divRect.x;
+            let mOffsetY = ev.clientY - divRect.y;
+            this.setState({contextMenuOpen: true, contaxtMenuOffsetX: mOffsetX, contaxtMenuOffsetY: mOffsetY});
         }}>
             <ClickableIcon text={this.state.nameEdit ? null : this.state.name} iconClass="fas fa-folder" onDoubleClick={this.props.onDoubleClick}/>
         {nameEditor}

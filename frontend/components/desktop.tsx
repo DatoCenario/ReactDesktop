@@ -30,7 +30,7 @@ interface DesktopState {
 }
 
 export class Desktop extends React.PureComponent<any, DesktopState> implements FolderContainer, SizedElement, SizedContainer{
-    foldersOpened: Array<{id: number, hidden: boolean, height: string, width: string, expanded: boolean, dragging: boolean, reachedBounds: Side[], placed: boolean, dragRef?: React.RefObject<CustomDraggable>}>;
+    foldersOpened: Array<{id: number, hidden: boolean, height: string, width: string, expanded: boolean, dragging: boolean, reachedBounds: Side[], placed: boolean, dragRef?: React.RefObject<CustomDraggable>, initialKey: number}>;
     contentDivRef: React.RefObject<HTMLDivElement> = React.createRef();
     
     constructor(props: any) {
@@ -55,7 +55,7 @@ export class Desktop extends React.PureComponent<any, DesktopState> implements F
     }
 
     openFolderAction(folderId: number): void {
-        this.foldersOpened.push({id: folderId, hidden: false, height: '500px', width: '500px', expanded: false, dragging: false, reachedBounds: null, placed: false});
+        this.foldersOpened.push({id: folderId, hidden: false, height: '500px', width: '500px', expanded: false, dragging: false, reachedBounds: null, placed: false, initialKey: folderId});
         this.forceUpdate();
     }
 
@@ -122,7 +122,7 @@ export class Desktop extends React.PureComponent<any, DesktopState> implements F
             }
             
             return <CustomDraggable
-                key={f.id + 'w'}
+                key={f.initialKey}
                 stopOthersOnDrag={true}
                 ref={f.dragRef}
                 drag={data => {
@@ -188,6 +188,7 @@ export class Desktop extends React.PureComponent<any, DesktopState> implements F
                         transition: 'height ease-in 0.1s, width ease-in 0.1s, opacity linear 0.2s'
                     }}>
                         <FolderWindow
+                            onFolderChange={id => {f.id = id; this.forceUpdate();}}
                             folderId={f.id} 
                             onHide={() => {
                                 f.hidden = true;

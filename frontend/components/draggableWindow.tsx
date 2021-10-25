@@ -11,6 +11,7 @@ interface WindowProps {
 
 interface FolderWindowProps extends WindowProps {
     folderId: number;
+    onFolderChange?: (newFolderId: number) => void;
 }
 
 interface FolderWindowState {
@@ -22,7 +23,9 @@ export class FolderWindow extends React.PureComponent<FolderWindowProps, FolderW
     backHistory: number[];
     
     openFolderAction(folderId: number): void {
+        this.openHistory.push(this.state.folder.id);
         this.setState({folder: getFolder(folderId)});
+        this.props.onFolderChange && this.props.onFolderChange(folderId);
     }
 
     constructor(props: FolderWindowProps) {
@@ -59,21 +62,24 @@ export class FolderWindow extends React.PureComponent<FolderWindowProps, FolderW
                     let lastOpened = this.openHistory.pop();
                     if(lastOpened !== undefined) {
                         this.backHistory.push(this.state.folder.id);
-                        this.setState({folder: getFolder(lastOpened)})
+                        this.setState({folder: getFolder(lastOpened)});
+                        this.props.onFolderChange && this.props.onFolderChange(lastOpened);
                     }
                 }} key={0} className="folder_arrow_button"><i className="fas fa-arrow-left"/></button>
                 <button onClick={ev => {
                     let lastBack = this.backHistory.pop();
                     if(lastBack !== undefined) {
                         this.openHistory.push(this.state.folder.id);
-                        this.setState({folder: getFolder(lastBack)})
+                        this.setState({folder: getFolder(lastBack)});
+                        this.props.onFolderChange && this.props.onFolderChange(lastBack);
                     }
                 }} key={1} className="folder_arrow_button"><i className="fas fa-arrow-right"/></button>
                 <Input key={currentFolderPath} customAreaClassName="folder_path_textarea" initialvalue={currentFolderPath} onEditEnd={newPath => {
                     try {
                         let folder = getFolderByPath(newPath);
-                        this.backHistory.push(this.state.folder.id);
+                        this.openHistory.push(this.state.folder.id);
                         this.setState({folder: folder});
+                        this.props.onFolderChange && this.props.onFolderChange(folder.id);
                     }
                     catch(err) { 
                         // no
