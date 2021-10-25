@@ -1,0 +1,378 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.main_div {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.desktop_cm_li {
+    list-style-type: none;
+    background-color: white;
+    margin: 0px;
+    border: 0.2vh solid black;
+    padding: 0%;
+    width: 100%;
+}
+
+.desktop_cm_li:hover {
+    list-style-type: none;
+    background-color: antiquewhite;
+    border: 0.2vh solid black;
+    color: red;
+    transition: background-color linear 0.1s, color linear 0.1s;
+    margin: 0px;
+    padding: 0%;
+    width: 100%;
+}
+
+.dropdown_parent {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.dropdown_menu_item { 
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    justify-content: left;
+    min-height: 3vh;
+    min-width: 50vh;
+    font-size: 1.5vh;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.dropdown_menu_divider {
+}
+
+.dropdown_parent > .dropdown_child {
+    display: none;
+}
+
+.dropdown_parent:hover > .dropdown_child {
+    display: flex;
+    float: left;
+    position: absolute;
+    left: 100%;
+}
+
+.dropdown_nest_arrow {
+    min-width: 3vh;
+    margin-left: auto;
+}
+
+.default_menu_class {
+    border: 0.2vh solid black;
+    background-color: rgb(230, 230, 230);
+}
+
+.default_menu_item_class {
+    font-size: 2.2vh;
+}
+
+.default_menu_item_class:hover {
+    background-color: rgba(100, 100, 100, 0.2);
+}
+
+.clickable_desktop_item {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.clickable_desktop_item:hover {
+    background-color: rgba(100,100,100, 0.5);
+    transition: background-color linear 0.2s;
+}
+
+.clickable_desktop_item_icon {
+
+}
+
+.desktop_item {
+    width: 10vh;
+    height: 10vh;
+}
+
+.flex_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.desktop {
+    background-color: rgb(13, 168, 230);
+}
+
+.desktop_content {
+    width: 100;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.desktop_task_panel {
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #00000073;
+}
+
+.start_button_desktop {
+    height: 100%;
+    width: 5%;
+    background-color: #00000073;
+}
+
+.windows_icon {
+    color: white;
+    transform: scale(2, 2);
+}
+
+.desktop_task_panel_item {
+    background-color: rgba(128, 128, 128, 0.2);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.desktop_task_panel_item:hover  {
+    filter: brightness(3);
+    transition: filter linear 0.3s;
+}
+
+.desktop_items {
+    display: flex;
+    width: 88%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.desktop_task_panel_clock {
+    color: wheat;
+    height: 100%;
+    display: block;
+    user-select: none;
+    width: 7%;
+    overflow: hidden;
+}
+
+.desktop_hidden_window_expander {
+    height: 100%;
+    width: 10vh;
+    border: 0.2vh solid gray;
+}
+
+.desktop_window_hidden {
+    display: none;
+}
+
+.desktop_window_no_dragging {
+    opacity: 1;
+}
+
+.desktop_window_dragging {
+    opacity: 0.5;
+}
+
+.desktop_window_show {
+    display: block;
+}
+
+.windows_icon:hover {
+    color: red;
+    transition: color linear 0.2s;
+    transform: scale(2, 2);
+}
+
+.desktop_window_tab {
+    display: flex;
+    justify-content: right;
+    height: 3vh;
+    width: 100%;
+}
+
+.desktop_window_content {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.folder_tab {
+    background-color: white;
+    min-height: 8vh;
+    min-width: 100%;
+    border: 0.2vh solid black;
+    box-sizing: border-box;
+    margin-bottom: 5vh;
+    display: flex;
+}
+
+.folder_arrow_button {
+    margin: 0;
+    padding: 0;
+    height: 50%;
+}
+
+.folder_arrow_button:hover {
+    background-color: rgba(128, 128, 128, 0.418);
+    transition: background-color linear 0.2s;
+}
+
+.folder_path_textarea {
+    resize: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 50%;
+    margin-left: 2%;
+    width: 100%
+}
+
+.desktop_window {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.desktop_tab_button_common {
+    width: 5vh;
+    height: 100%;
+    text-align: center;
+    border-width: 0;
+}
+
+.desktop_tab_button_common:hover {
+    background-color: gray;
+    color: white;
+    transition: color linear 0.2s, background-color linear 0.2s;
+}
+
+.desktop_window_tab_close {
+
+}
+
+.desktop_window_tab_close:hover {
+    color: white;
+    background-color: red;
+}
+
+.desktop_window_tab_hide {
+
+}
+
+.desktop_window_tab_expand {
+
+}
+
+.item_context_menu_container {
+    position: absolute;
+    display: flex;
+}
+
+.desktop_item_name_editor {
+    background-color: rgba(255, 255, 255, 0.082);
+    resize: none;
+    max-width: 10vh;
+    max-height: 3vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.desktop_item_name_editor:hover {
+    background-color: rgba(255, 255, 255, 0.61);
+    transition: background-color linear 0.3s;
+}
+
+.default_input_area {
+
+}
+
+.default_input_area:hover {
+    
+}
+
+.desktop_palcement_box {
+    position: absolute;
+    z-index: 500;
+    border: 0.5vh solid black;
+}
+
+.react-resizable {
+    position: relative;
+  }
+  .react-resizable-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    box-sizing: border-box;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDYiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmYwMCIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iNnB4Ij48ZyBvcGFjaXR5PSIwLjMwMiI+PHBhdGggZD0iTSA2IDYgTCAwIDYgTCAwIDQuMiBMIDQgNC4yIEwgNC4yIDQuMiBMIDQuMiAwIEwgNiAwIEwgNiA2IEwgNiA2IFoiIGZpbGw9IiMwMDAwMDAiLz48L2c+PC9zdmc+');
+    background-position: bottom right;
+    padding: 0 3px 3px 0;
+  }
+  .react-resizable-handle-sw {
+    bottom: 0;
+    left: 0;
+    cursor: sw-resize;
+    transform: rotate(90deg);
+  }
+  .react-resizable-handle-se {
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+  }
+  .react-resizable-handle-nw {
+    top: 0;
+    left: 0;
+    cursor: nw-resize;
+    transform: rotate(180deg);
+  }
+  .react-resizable-handle-ne {
+    top: 0;
+    right: 0;
+    cursor: ne-resize;
+    transform: rotate(270deg);
+  }
+  .react-resizable-handle-w,
+  .react-resizable-handle-e {
+    top: 50%;
+    margin-top: -10px;
+    cursor: ew-resize;
+  }
+  .react-resizable-handle-w {
+    left: 0;
+    transform: rotate(135deg);
+  }
+  .react-resizable-handle-e {
+    right: 0;
+    transform: rotate(315deg);
+  }
+  .react-resizable-handle-n,
+  .react-resizable-handle-s {
+    left: 50%;
+    margin-left: -10px;
+    cursor: ns-resize;
+  }
+  .react-resizable-handle-n {
+    top: 0;
+    transform: rotate(225deg);
+  }
+  .react-resizable-handle-s {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
